@@ -1,0 +1,39 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/menu_main"
+        android:icon="@drawable/ic_more_vert_white_24dp"
+        android:title="Menu"
+        android:visible="true"
+        app:showAsAction="always">
+        <menu>
+            <item
+                android:id="@+id/menu_settings1"
+                app:showAsAction="never"
+                android:title="Dados"/>
+            <item
+                android:id="@+id/menu_settings2"
+                app:showAsAction="never"
+                android:title="Meta"/>
+            <item
+                android:id="@+id/menu_settings3"
+                app:showAsAction="never"
+                android:title="Títulos"/>
+        </menu>
+    </item>
+    <!--<item-->
+        <!--android:id="@+id/action_consulta_dados"-->
+        <!--android:orderInCategory="1"-->
+        <!--android:title="Dados"-->
+        <!--app:showAsAction="ifRoom|withText" />-->
+    <!--<item-->
+        <!--android:id="@+id/action_consulta_meta"-->
+        <!--android:orderInCategory="2"-->
+        <!--android:title="Metas"-->
+        <!--app:showAsAction="ifRoom|withText" />-->
+    <!--<item-->
+        <!--android:id="@+id/action_consulta_titulos"-->
+        <!--android:orderInCategory="3"-->
+        <!--android:title="Títulos"-->
+        <!--app:showAsAction="ifRoom|withText" />-->
+</menu>

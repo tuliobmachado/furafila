@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#11B2B2</color>
+    <color name="colorPrimaryDark">#11B2B2</color>
+    <color name="colorAccent">#FFFFFF</color>
+
+    <color name="cardSelecionado">#5011B2B2</color>
+    <color name="color_adicionado">#4caf50</color>
+    <color name="color_excluido">#f44336</color>
+    <color name="movSincronizado">#00C853</color>
+    <color name="movNaoSincronizado">#D50000</color>
+    <color name="movPendente">#FF5C00</color>
+    <color name="parceiroAVencer">#FFF528</color>
+</resources>

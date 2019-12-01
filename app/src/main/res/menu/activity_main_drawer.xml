@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_pedido"
+            android:title="Vendas"/>
+    </group>
+
+    <item android:title="Consultas"
+        android:visible="false">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/nav_consulta_meta"
+                    android:title="Meta" />
+                <item
+                    android:id="@+id/nav_consulta_parceiro"
+                    android:title="Parceiros" />
+                <item
+                    android:id="@+id/nav_consulta_estoque"
+                    android:title="Estoque" />
+            </group>
+        </menu>
+    </item>
+
+    <item android:title="Relatórios"
+        android:visible="false">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/nav_relatorio_pedido"
+                    android:title="Pedidos" />
+                <item
+                    android:id="@+id/nav_relatorio_parceiro"
+                    android:title="Parceiros"
+                    android:visible="false"/>
+                <item
+                    android:id="@+id/nav_relatorio_material"
+                    android:title="Materiais"
+                    android:visible="false"/>
+            </group>
+        </menu>
+    </item>
+
+    <item android:title="Configurações">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/nav_configuracoes_limpeza"
+                    android:title="Limpeza Pedidos"
+                    android:visible="false"/>
+                <item
+                    android:id="@+id/nav_configuracoes_sincronia"
+                    android:title="Solicitar Sincronia"
+                    android:visible="false"/>
+                <item
+                    android:id="@+id/nav_configuracoes_sair"
+                    android:title="Sair" />
+            </group>
+        </menu>
+    </item>
+
+</menu>
