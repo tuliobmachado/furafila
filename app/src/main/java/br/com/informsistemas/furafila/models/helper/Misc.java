@@ -7,6 +7,7 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.view.animation.Animation;
 import android.view.animation.RotateAnimation;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -493,5 +494,9 @@ public class Misc {
         }
 
         return value;
+    }
+
+    public static void alerta(Context context, String mensagem){
+        Toast.makeText(context, mensagem, Toast.LENGTH_LONG).show();
     }
 }

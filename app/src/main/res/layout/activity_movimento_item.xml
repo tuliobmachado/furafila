@@ -10,7 +10,7 @@
         android:layout_height="match_parent"
         android:layout_above="@+id/layout_bottom"
         android:orientation="vertical"
-        tools:context=".controller.MovimentoItemActivity">
+        tools:context=".activity.MovimentoItemActivity">
 
         <android.support.design.widget.AppBarLayout
             android:layout_width="match_parent"

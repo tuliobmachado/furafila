@@ -4,7 +4,6 @@ import java.util.List;
 
 import br.com.informsistemas.furafila.models.pojo.Atualizacao;
 import br.com.informsistemas.furafila.models.pojo.Categoria;
-import br.com.informsistemas.furafila.models.pojo.FormaPagamento;
 import br.com.informsistemas.furafila.models.pojo.Material;
 import br.com.informsistemas.furafila.models.pojo.MaterialSaldo;
 import br.com.informsistemas.furafila.models.pojo.MetaFuncionario;
@@ -12,7 +11,7 @@ import br.com.informsistemas.furafila.models.pojo.Movimento;
 import br.com.informsistemas.furafila.models.pojo.MovimentoItem;
 import br.com.informsistemas.furafila.models.pojo.MovimentoParcela;
 import br.com.informsistemas.furafila.models.pojo.Parceiro;
-import br.com.informsistemas.furafila.models.pojo.Registro;
+import br.com.informsistemas.furafila.model.Registro;
 
 public class Constants {
 
@@ -20,7 +19,7 @@ public class Constants {
 
         public static final String BASE = "http://informnfe.com/NFeEmitir/ServicoAppH.dll/api/";
         public static final String BASE_MOCK = "http://192.168.0.10:8089/api/";
-//        public static final String BASE = "http://192.168.0.190:8089/api/";
+//        public static final String BASE = "http://192.168.0.87:8089/api/";
         public static final String LOGIN_REGISTRAR = "Login/Registrar";
         public static final String DEVICE_CONSULTAR = "Device/Consultar";
         public static final String SINCRONIA_CONSULTAR = "Sincronia/Consultar";
@@ -53,6 +52,7 @@ public class Constants {
         public static final int REGISTRO_PENDENTE = 0;
         public static final int ACESSO_PENDENTE = 1;
         public static final int RESGATE_IMPORTAR = 2;
+        public static final int CONFIGURACAO_SITEF = 3;
 
     }
 
@@ -86,10 +86,10 @@ public class Constants {
         public static List<Parceiro> listPesquisaParceiro = null;
         public static List<Material> listPesquisaMaterial = null;
         public static List<Material> listMaterialPreco = null;
-        public static List<FormaPagamento> listPesquisaPagamento = null;
         public static List<Categoria> listPesquisaCategoria = null;
         public static List<MaterialSaldo> listMaterialSaldo = null;
         public static MetaFuncionario metaFuncionario = null;
+        public static Boolean configuracaoSitef = false;
     }
 
     public static class SINCRONIA {

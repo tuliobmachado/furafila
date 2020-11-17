@@ -2,7 +2,7 @@ package br.com.informsistemas.furafila.models.dao;
 
 import android.content.Context;
 
-import br.com.informsistemas.furafila.models.pojo.Registro;
+import br.com.informsistemas.furafila.model.Registro;
 
 public class RegistroDAO extends BaseDAO<Registro> {
 

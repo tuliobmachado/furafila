@@ -15,11 +15,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import br.com.informsistemas.furafila.model.ConfiguracaoSitef;
+import br.com.informsistemas.furafila.model.DadosLoginNFCe;
 import br.com.informsistemas.furafila.models.pojo.Atualizacao;
 import br.com.informsistemas.furafila.models.pojo.Categoria;
 import br.com.informsistemas.furafila.models.pojo.CategoriaMaterial;
 import br.com.informsistemas.furafila.models.pojo.DadosImpressao;
-import br.com.informsistemas.furafila.models.pojo.FormaPagamento;
+import br.com.informsistemas.furafila.model.ModoPagamento;
 import br.com.informsistemas.furafila.models.pojo.Material;
 import br.com.informsistemas.furafila.models.pojo.MaterialEstado;
 import br.com.informsistemas.furafila.models.pojo.MaterialSaldo;
@@ -31,7 +33,7 @@ import br.com.informsistemas.furafila.models.pojo.PagamentoImpressao;
 import br.com.informsistemas.furafila.models.pojo.Parceiro;
 import br.com.informsistemas.furafila.models.pojo.ParceiroVencimento;
 import br.com.informsistemas.furafila.models.pojo.ProdutoImpressao;
-import br.com.informsistemas.furafila.models.pojo.Registro;
+import br.com.informsistemas.furafila.model.Registro;
 import br.com.informsistemas.furafila.models.pojo.TabelaPrecoItem;
 import br.com.informsistemas.furafila.models.utils.IEntidade;
 
@@ -51,6 +53,7 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
         try {
             TableUtils.createTable(cs, Atualizacao.class);
             TableUtils.createTable(cs, Registro.class);
+            TableUtils.createTable(cs, DadosLoginNFCe.class);
             TableUtils.createTable(cs, Parceiro.class);
             TableUtils.createTable(cs, ParceiroVencimento.class);
             TableUtils.createTable(cs, Categoria.class);
@@ -59,7 +62,7 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
             TableUtils.createTable(cs, MaterialEstado.class);
             TableUtils.createTable(cs, MaterialSaldo.class);
             TableUtils.createTable(cs, TabelaPrecoItem.class);
-            TableUtils.createTable(cs, FormaPagamento.class);
+            TableUtils.createTable(cs, ModoPagamento.class);
             TableUtils.createTable(cs, Movimento.class);
             TableUtils.createTable(cs, MovimentoItem.class);
             TableUtils.createTable(cs, MovimentoParcela.class);
@@ -67,6 +70,7 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
             TableUtils.createTable(cs, DadosImpressao.class);
             TableUtils.createTable(cs, ProdutoImpressao.class);
             TableUtils.createTable(cs, PagamentoImpressao.class);
+            TableUtils.createTable(cs, ConfiguracaoSitef.class);
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -108,7 +112,7 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
             TableUtils.dropTable(cs, MovimentoParcela.class, true);
             TableUtils.dropTable(cs, MovimentoItem.class, true);
             TableUtils.dropTable(cs, Movimento.class, true);
-            TableUtils.dropTable(cs, FormaPagamento.class, true);
+            TableUtils.dropTable(cs, ModoPagamento.class, true);
             TableUtils.dropTable(cs, TabelaPrecoItem.class, true);
             TableUtils.dropTable(cs, MaterialSaldo.class, true);
             TableUtils.dropTable(cs, MaterialEstado.class, true);
@@ -117,8 +121,10 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
             TableUtils.dropTable(cs, Categoria.class, true);
             TableUtils.dropTable(cs, ParceiroVencimento.class, true);
             TableUtils.dropTable(cs, Parceiro.class, true);
+            TableUtils.dropTable(cs, DadosLoginNFCe.class, true);
             TableUtils.dropTable(cs, Registro.class, true);
             TableUtils.dropTable(cs, Atualizacao.class, true);
+            TableUtils.dropTable(cs, ConfiguracaoSitef.class, true);
 
             onCreate(this.getWritableDatabase(), cs);
         }catch (SQLException e) {

@@ -14,7 +14,6 @@ import br.com.informsistemas.furafila.models.callback.MaterialService;
 import br.com.informsistemas.furafila.models.callback.ParceiroService;
 import br.com.informsistemas.furafila.models.callback.PedidoService;
 import br.com.informsistemas.furafila.models.callback.RegistroService;
-import br.com.informsistemas.furafila.models.callback.SincroniaService;
 import br.com.informsistemas.furafila.models.helper.Constants;
 import br.com.informsistemas.furafila.models.utils.DateDeserializer;
 import okhttp3.Interceptor;
@@ -29,7 +28,6 @@ public class RestManager {
     private Boolean excludeExposeDefault = false;
     private RegistroService registroService;
     private DeviceService deviceService;
-    private SincroniaService sincroniaService;
     private PedidoService pedidoService;
     private ParceiroService parceiroService;
     private MaterialService materialService;
@@ -54,16 +52,6 @@ public class RestManager {
         }
 
         return deviceService;
-    }
-
-    public SincroniaService getSincroniaService(){
-        if (sincroniaService == null){
-            Retrofit retrofit = getRetrofit(600, excludeExposeDefault);
-
-            sincroniaService = retrofit.create(SincroniaService.class);
-        }
-
-        return sincroniaService;
     }
 
     public PedidoService getPedidoService(){
@@ -105,7 +93,7 @@ public class RestManager {
 
     public ResgateService getResgateService(){
         if (resgateService == null){
-            Retrofit retrofit = getRetrofitMock(120, excludeExposeDefault);
+            Retrofit retrofit = getRetrofit(120, excludeExposeDefault);
             resgateService = retrofit.create(ResgateService.class);
         }
 

@@ -48,7 +48,9 @@ public class PreVendaTask extends AsyncTask<String, Void, List<ResgateResponse>>
         ResgateService resgateService = new RestManager().getResgateService();
 
         Call<RestResponse<ResgateResponse>> resgateRequest = resgateService.getPreVenda(
-                "'"+ Constants.DTO.registro.codigoconfiguracao+"'", "'"+ordemMovimento+"'", ordemBalcao);
+                "'"+Constants.DTO.registro.cnpj+"'",
+                "'"+ Constants.DTO.registro.codigoconfiguracao+"'",
+                "'"+ordemMovimento+"'", ordemBalcao);
 
         try {
             RestResponse<ResgateResponse> restResponse = null;

@@ -17,11 +17,11 @@ import android.widget.Toast;
 import com.google.gson.Gson;
 
 import br.com.informsistemas.furafila.R;
-import br.com.informsistemas.furafila.controller.LoginActivity;
+import br.com.informsistemas.furafila.activity.LoginActivity;
 import br.com.informsistemas.furafila.controller.rest.RestManager;
 import br.com.informsistemas.furafila.models.callback.DeviceService;
 import br.com.informsistemas.furafila.models.helper.Constants;
-import br.com.informsistemas.furafila.models.pojo.Registro;
+import br.com.informsistemas.furafila.model.Registro;
 import br.com.informsistemas.furafila.models.pojo.RestResponse;
 import br.com.informsistemas.furafila.models.utils.DialogClass;
 import retrofit2.Call;

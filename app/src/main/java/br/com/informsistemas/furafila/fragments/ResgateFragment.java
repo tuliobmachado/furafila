@@ -17,10 +17,8 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
 import android.widget.ProgressBar;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -29,8 +27,10 @@ import br.com.informsistemas.furafila.R;
 import br.com.informsistemas.furafila.model.Balcao;
 import br.com.informsistemas.furafila.model.BalcaoItem;
 import br.com.informsistemas.furafila.model.BalcaoParcela;
+import br.com.informsistemas.furafila.model.ModoPagamento;
 import br.com.informsistemas.furafila.model.PreVendaArgos;
 import br.com.informsistemas.furafila.model.PreVendaBalcao;
+import br.com.informsistemas.furafila.dao.ModoPagamentoDAO;
 import br.com.informsistemas.furafila.models.dao.MaterialDAO;
 import br.com.informsistemas.furafila.models.dao.MovimentoDAO;
 import br.com.informsistemas.furafila.models.dao.MovimentoItemDAO;
@@ -46,7 +46,7 @@ import br.com.informsistemas.furafila.service.ResgateService;
 import br.com.informsistemas.furafila.adapter.ResgateAdapter;
 import br.com.informsistemas.furafila.controller.rest.RestManager;
 import br.com.informsistemas.furafila.models.helper.Constants;
-import br.com.informsistemas.furafila.models.pojo.Resgate;
+import br.com.informsistemas.furafila.model.Resgate;
 import br.com.informsistemas.furafila.models.pojo.RestResponse;
 import br.com.informsistemas.furafila.rest.request.ResgateRequest;
 import br.com.informsistemas.furafila.tasks.PreVendaTask;
@@ -90,7 +90,7 @@ public class ResgateFragment extends Fragment implements ResgateViewHolder.OnRes
 
         resgateService = new RestManager().getResgateService();
 
-        onShowResgateModal();
+        carregarPagina("", "", null);
 
         return view;
     }
@@ -160,7 +160,7 @@ public class ResgateFragment extends Fragment implements ResgateViewHolder.OnRes
 
     private Call<RestResponse<Resgate>> callResgateConsultarApi(String parceiro, String documento, Date data) {
         ResgateRequest resgateRequest = new ResgateRequest(Constants.DTO.registro.codigoconfiguracao,
-                Constants.DTO.registro.codigofilialcontabil, Constants.DTO.registro.cnpj, parceiro, documento, data, false);
+                Constants.DTO.registro.codigofilialcontabil, Constants.DTO.registro.cnpj, parceiro, documento, data, Constants.DTO.registro.balcao);
 
         return resgateService.postConsultar(resgateRequest);
     }
@@ -201,8 +201,16 @@ public class ResgateFragment extends Fragment implements ResgateViewHolder.OnRes
 
     }
 
-    private void onSalvarForma(String codigoforma, String codigotipoevento, String descricaotipoevento, Float valor){
+    private void onSalvarForma(String codigotipoevento, String descricaotipoevento, Float valor){
+        ModoPagamento modoPagamento = ModoPagamentoDAO.getInstance(getActivity()).findByIdModoResgate("codigotipoevento", codigotipoevento);
 
+        if (modoPagamento == null){
+            modoPagamento = new ModoPagamento(codigotipoevento, descricaotipoevento, "F", new Date(), Float.parseFloat("0"), Float.parseFloat("0"));
+        }else{
+            modoPagamento.descricao = descricaotipoevento;
+        }
+
+        ModoPagamentoDAO.getInstance(getActivity()).createOrUpdate(modoPagamento);
     }
 
     public void onResgateArgos(PreVendaArgos preVendaArgos){
@@ -247,8 +255,8 @@ public class ResgateFragment extends Fragment implements ResgateViewHolder.OnRes
 
         for (int i = 0; i < balcaoParcelaList.size(); i++) {
 
-            onSalvarForma(balcaoParcelaList.get(i).codigoformapagamento, balcaoParcelaList.get(i).codigotipoevento,
-                    balcaoParcelaList.get(i).descricaotipoevento, balcaoParcelaList.get(i).valor.floatValue());
+            onSalvarForma(balcaoParcelaList.get(i).codigotipoevento, balcaoParcelaList.get(i).descricaotipoevento,
+                    balcaoParcelaList.get(i).valor.floatValue());
 
             MovimentoParcela movimentoParcela = new MovimentoParcela(movimento,
                     balcaoParcelaList.get(i).codigoformapagamento, balcaoParcelaList.get(i).codigotipoevento,

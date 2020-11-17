@@ -17,7 +17,7 @@ import android.view.ViewGroup;
 import java.util.List;
 
 import br.com.informsistemas.furafila.R;
-import br.com.informsistemas.furafila.controller.MainActivity;
+import br.com.informsistemas.furafila.activity.MainActivity;
 import br.com.informsistemas.furafila.controller.adapter.ParceiroVencimentoAdapter;
 import br.com.informsistemas.furafila.models.dao.ParceiroVencimentoDAO;
 import br.com.informsistemas.furafila.models.pojo.Parceiro;

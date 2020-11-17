@@ -12,7 +12,7 @@ import java.util.List;
 
 import br.com.informsistemas.furafila.R;
 import br.com.informsistemas.furafila.models.helper.Misc;
-import br.com.informsistemas.furafila.models.pojo.Resgate;
+import br.com.informsistemas.furafila.model.Resgate;
 import br.com.informsistemas.furafila.viewholder.ResgateViewHolder;
 
 public class ResgateAdapter extends RecyclerView.Adapter<ResgateViewHolder>  {

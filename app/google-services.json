@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "453652256679",
+    "firebase_url": "https://furafila-eac58.firebaseio.com",
+    "project_id": "furafila-eac58",
+    "storage_bucket": "furafila-eac58.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:453652256679:android:1383c7c913d6324bafc882",
+        "android_client_info": {
+          "package_name": "br.com.informsistemas.furafila"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "453652256679-982bjihdqcgdg8at2mer0at68uoi9alf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBAj9vF9AwSL2-9ivpO8pr0pPIUcmCfl-Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "453652256679-982bjihdqcgdg8at2mer0at68uoi9alf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

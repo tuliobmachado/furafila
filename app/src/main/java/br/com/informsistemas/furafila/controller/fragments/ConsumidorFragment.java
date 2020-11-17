@@ -23,7 +23,7 @@ import java.util.List;
 
 import br.com.informsistemas.furafila.R;
 import br.com.informsistemas.furafila.controller.adapter.ParceiroAdapter;
-import br.com.informsistemas.furafila.models.dao.FormaPagamentoDAO;
+import br.com.informsistemas.furafila.dao.ModoPagamentoDAO;
 import br.com.informsistemas.furafila.models.dao.ParceiroDAO;
 import br.com.informsistemas.furafila.models.helper.Constants;
 import br.com.informsistemas.furafila.models.helper.Enums;
@@ -269,7 +269,7 @@ public class ConsumidorFragment extends Fragment {
             }
 
             if (!p.codigoformapagamento.equals("")) {
-                if (FormaPagamentoDAO.getInstance(getActivity()).findByIdAuxiliar("codigoforma", p.codigoformapagamento) != null) {
+                if (ModoPagamentoDAO.getInstance(getActivity()).findByIdAuxiliar("codigoforma", p.codigoformapagamento) != null) {
                     Constants.MOVIMENTO.codigoformapagamento = p.codigoformapagamento;
                 }
             }

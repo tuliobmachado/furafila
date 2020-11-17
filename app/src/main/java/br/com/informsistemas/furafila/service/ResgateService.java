@@ -1,7 +1,7 @@
 package br.com.informsistemas.furafila.service;
 
 import br.com.informsistemas.furafila.models.helper.Constants;
-import br.com.informsistemas.furafila.models.pojo.Resgate;
+import br.com.informsistemas.furafila.model.Resgate;
 import br.com.informsistemas.furafila.models.pojo.RestResponse;
 import br.com.informsistemas.furafila.rest.request.ResgateRequest;
 import br.com.informsistemas.furafila.rest.response.ResgateResponse;
@@ -17,5 +17,5 @@ public interface ResgateService {
     Call<RestResponse<Resgate>> postConsultar(@Body ResgateRequest resgateRequest);
 
     @GET(Constants.URL.RESGATE_PREVENDA)
-    Call<RestResponse<ResgateResponse>> getPreVenda(@Query("codigoConfiguracao") String codigoConfiguracao, @Query("ordemMovimento") String ordemMovimento, @Query("ordemBalcao") Integer ordemBalcao);
+    Call<RestResponse<ResgateResponse>> getPreVenda(@Query("CNPJ") String CNPJ, @Query("codigoConfiguracao") String codigoConfiguracao, @Query("ordemMovimento") String ordemMovimento, @Query("ordemBalcao") Integer ordemBalcao);
 }

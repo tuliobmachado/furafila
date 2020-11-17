@@ -24,8 +24,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.com.informsistemas.furafila.R;
-import br.com.informsistemas.furafila.controller.MainActivity;
-import br.com.informsistemas.furafila.controller.ResumoActivity;
+import br.com.informsistemas.furafila.activity.MainActivity;
+import br.com.informsistemas.furafila.activity.ResumoActivity;
 import br.com.informsistemas.furafila.controller.adapter.RelatorioPedidoAdapter;
 import br.com.informsistemas.furafila.models.dao.MovimentoDAO;
 import br.com.informsistemas.furafila.models.helper.Constants;

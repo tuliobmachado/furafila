@@ -13,14 +13,13 @@ import java.util.Date;
 import java.util.List;
 
 import br.com.informsistemas.furafila.R;
-import br.com.informsistemas.furafila.controller.fragments.MovimentoFragment;
+import br.com.informsistemas.furafila.fragments.MovimentoFragment;
 import br.com.informsistemas.furafila.controller.rest.Request.RequestPedido;
 import br.com.informsistemas.furafila.controller.rest.Response.ResponsePedido;
 import br.com.informsistemas.furafila.controller.rest.RestManager;
 import br.com.informsistemas.furafila.models.callback.PedidoService;
 import br.com.informsistemas.furafila.models.dao.AtualizacaoDAO;
 import br.com.informsistemas.furafila.models.dao.DadosImpressaoDAO;
-import br.com.informsistemas.furafila.models.dao.MaterialSaldoDAO;
 import br.com.informsistemas.furafila.models.dao.MovimentoDAO;
 import br.com.informsistemas.furafila.models.dao.PagamentoImpressaoDAO;
 import br.com.informsistemas.furafila.models.dao.ProdutoImpressaoDAO;
@@ -29,7 +28,6 @@ import br.com.informsistemas.furafila.models.helper.Enums;
 import br.com.informsistemas.furafila.models.helper.PrintNFCe;
 import br.com.informsistemas.furafila.models.pojo.Atualizacao;
 import br.com.informsistemas.furafila.models.pojo.DadosImpressao;
-import br.com.informsistemas.furafila.models.pojo.MaterialSaldo;
 import br.com.informsistemas.furafila.models.pojo.Movimento;
 import br.com.informsistemas.furafila.models.pojo.PagamentoImpressao;
 import br.com.informsistemas.furafila.models.pojo.ProdutoImpressao;
@@ -59,7 +57,7 @@ public class PedidoTask extends AsyncTask<String, Void, List<ResponsePedido>> {
     @Override
     protected List<ResponsePedido> doInBackground(String... strings) {
         for (int i = 0; i < Constants.PEDIDO.movimentoParcelas.size(); i++) {
-            if (Constants.PEDIDO.movimentoParcelas.get(i).troco > 0){
+            if (Constants.PEDIDO.movimentoParcelas.get(i).troco > 0) {
                 Constants.PEDIDO.movimentoParcelas.get(i).valor = Constants.PEDIDO.movimentoParcelas.get(i).valor - Constants.PEDIDO.movimentoParcelas.get(i).troco;
             }
         }
@@ -73,9 +71,9 @@ public class PedidoTask extends AsyncTask<String, Void, List<ResponsePedido>> {
             reqPedido.movimentoparcela.get(i).codigoforma = Constants.DTO.registro.codigoformapagamento;
         }
 
-        if (Constants.APP.TIPO_APLICACAO == Enums.TIPO_APLICACAO.NFCE){
+        if (Constants.APP.TIPO_APLICACAO == Enums.TIPO_APLICACAO.NFCE) {
             reqPedido.nfce = true;
-        }else{
+        } else {
             reqPedido.nfce = false;
         }
 
@@ -129,32 +127,24 @@ public class PedidoTask extends AsyncTask<String, Void, List<ResponsePedido>> {
 
                     if (requestPedido.get(0).status.equals("G")) {
                         status = "T";
-                    }else{
+                    } else {
                         status = "P";
                     }
 
                     atualizaStatusMovimento(mov, status);
 
-                    if (requestPedido.get(0).materialsaldo != null) {
-                        atualizaSaldo(requestPedido.get(0).materialsaldo);
-                    }
-
                     DialogClass.dialogDismiss(dialog);
 
                     if (Constants.PEDIDO.PEDIDOATUAL > Constants.PEDIDO.listPedidos.size()) {
-                        if (Constants.APP.TIPO_APLICACAO == Enums.TIPO_APLICACAO.FORCA_DE_VENDAS) {
-                            ((MovimentoFragment) fragment).getSincronia(false);
-                        }else{
 
-                            if (status.equals("T")) {
-                                SalvarImpressao(requestPedido.get(0).dadosimpressao, mov.id);
-                                PrintNFCe.execute(fragment, requestPedido.get(0).dadosimpressao);
-                            }
-
+                        if (status.equals("T")) {
+                            SalvarImpressao(requestPedido.get(0).dadosimpressao, mov.id);
+                            PrintNFCe.execute(fragment, requestPedido.get(0).dadosimpressao);
                         }
 
+
                         ((MovimentoFragment) fragment).atualizaLista();
-                        
+
                     } else {
                         ((MovimentoFragment) fragment).verificaPedido(Constants.PEDIDO.PEDIDOATUAL);
                     }
@@ -175,42 +165,28 @@ public class PedidoTask extends AsyncTask<String, Void, List<ResponsePedido>> {
         });
     }
 
-    private void atualizaSaldo(List<MaterialSaldo> materialSaldo){
-
-        for (int i = 0; i < materialSaldo.size(); i++) {
-            MaterialSaldo m = MaterialSaldoDAO.getInstance(fragment.getActivity()).findByIdAuxiliar("codigomaterial", materialSaldo.get(i).codigomaterial);
-
-            if (m != null){
-                m.saldo = materialSaldo.get(i).saldo;
-
-                MaterialSaldoDAO.getInstance(fragment.getActivity()).createOrUpdate(m);
-            }
-        }
-
-    }
-
-    private void setDataParcialAtualizacao(Date data){
+    private void setDataParcialAtualizacao(Date data) {
         Atualizacao atualizacao = AtualizacaoDAO.getInstance(fragment.getActivity()).findByNomeTabela("MATERIALSALDO");
         atualizacao.datasincparcial = data;
 
         AtualizacaoDAO.getInstance(fragment.getActivity()).createOrUpdate(atualizacao);
     }
 
-    private Movimento getMovimentoAtual(Integer id){
+    private Movimento getMovimentoAtual(Integer id) {
         return MovimentoDAO.getInstance(fragment.getActivity()).findById(id);
     }
 
-    private void atualizaStatusMovimento(Movimento mov, String status){
+    private void atualizaStatusMovimento(Movimento mov, String status) {
         mov.sincronizado = status;
         MovimentoDAO.getInstance(fragment.getActivity()).createOrUpdate(mov);
     }
 
-    private void SalvarImpressao(DadosImpressao dadosImpressao, Integer movimento_id){
+    private void SalvarImpressao(DadosImpressao dadosImpressao, Integer movimento_id) {
         DadosImpressao dados = DadosImpressaoDAO.getInstance(fragment.getActivity()).findByIdAuxiliar("movimento_id", movimento_id);
         List<PagamentoImpressao> listPagamentos = PagamentoImpressaoDAO.getInstance(fragment.getActivity()).findAllByIdAuxiliar("movimento_id", movimento_id);
         List<ProdutoImpressao> listProdutos = ProdutoImpressaoDAO.getInstance(fragment.getActivity()).findAllByIdAuxiliar("movimento_id", movimento_id);
 
-        if (dados == null){
+        if (dados == null) {
             dadosImpressao.movimento_id = movimento_id;
 
             for (int i = 0; i < dadosImpressao.ListaProdutos.size(); i++) {
@@ -224,7 +200,7 @@ public class PedidoTask extends AsyncTask<String, Void, List<ResponsePedido>> {
             dados = dadosImpressao;
             listPagamentos = dadosImpressao.ListaFormasPagamento;
             listProdutos = dadosImpressao.ListaProdutos;
-        }else{
+        } else {
             dados.Troco = dadosImpressao.Troco;
             dados.InformacoesComplementares = dadosImpressao.InformacoesComplementares;
             dados.QrCode = dadosImpressao.QrCode;

@@ -23,6 +23,9 @@ allprojects {
         maven { url "https://packagecloud.io/stone/sdk-android-snapshot/maven2" }
         maven { url "https://packagecloud.io/Stone/pos-android-service-container/maven2" }
         jcenter()
+        flatDir {
+            dirs 'libs'
+        }
     }
 }
 

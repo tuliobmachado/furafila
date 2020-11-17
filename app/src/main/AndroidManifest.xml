@@ -21,7 +21,7 @@
         tools:replace="android:allowBackup"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".controller.MainActivity"
+            android:name=".activity.MainActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -31,13 +31,17 @@
             </intent-filter>
 
         </activity>
-        <activity android:name=".controller.LoginActivity" android:theme="@style/AppTheme.NoActionBar"/>
-        <activity android:name=".controller.ConsumidorActivity" android:theme="@style/AppTheme.NoActionBar"/>
-        <activity android:name=".controller.MovimentoItemActivity" android:theme="@style/AppTheme.NoActionBar"/>
-        <activity android:name=".controller.MovimentoParcelaActivity" android:theme="@style/AppTheme.NoActionBar"/>
-        <activity android:name=".controller.ResumoActivity" android:theme="@style/AppTheme.NoActionBar"/>
-        <activity android:name=".controller.ValidationStoneActivity" android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".activity.LoginActivity" android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".activity.ConsumidorActivity" android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".activity.MovimentoItemActivity" android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".activity.MovimentoParcelaActivity" android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".activity.ResumoActivity" android:theme="@style/AppTheme.NoActionBar"/>
         <activity android:name=".activity.ResgateActivity" android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".activity.PagamentoTransactionActivity" android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".activity.MessageActivity" android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".activity.DialogActivity" android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".activity.MenuActivity" android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".activity.YesNoActivity" android:theme="@style/AppTheme.NoActionBar"/>
         <service android:name=".service.ClosingService"></service>
     </application>
 

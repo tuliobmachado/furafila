@@ -20,7 +20,7 @@ import android.widget.SearchView;
 import java.util.List;
 
 import br.com.informsistemas.furafila.R;
-import br.com.informsistemas.furafila.controller.MainActivity;
+import br.com.informsistemas.furafila.activity.MainActivity;
 import br.com.informsistemas.furafila.controller.adapter.ParceiroConsultaAdapter;
 import br.com.informsistemas.furafila.models.dao.ParceiroDAO;
 import br.com.informsistemas.furafila.models.pojo.Parceiro;

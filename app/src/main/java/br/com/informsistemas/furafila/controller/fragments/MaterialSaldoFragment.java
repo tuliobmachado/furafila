@@ -19,7 +19,7 @@ import android.widget.SearchView;
 import java.util.List;
 
 import br.com.informsistemas.furafila.R;
-import br.com.informsistemas.furafila.controller.MainActivity;
+import br.com.informsistemas.furafila.activity.MainActivity;
 import br.com.informsistemas.furafila.controller.adapter.MaterialSaldoAdapter;
 import br.com.informsistemas.furafila.models.dao.MaterialSaldoDAO;
 import br.com.informsistemas.furafila.models.pojo.MaterialSaldo;

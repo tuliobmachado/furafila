@@ -11,4 +11,5 @@
     <color name="movNaoSincronizado">#D50000</color>
     <color name="movPendente">#FF5C00</color>
     <color name="parceiroAVencer">#FFF528</color>
+    <color name="black">#000000</color>
 </resources>

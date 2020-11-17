@@ -19,7 +19,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.com.informsistemas.furafila.R;
-import br.com.informsistemas.furafila.controller.MainActivity;
+import br.com.informsistemas.furafila.activity.MainActivity;
 import br.com.informsistemas.furafila.controller.adapter.ParceiroDadosAdapter;
 import br.com.informsistemas.furafila.models.pojo.Parceiro;
 
